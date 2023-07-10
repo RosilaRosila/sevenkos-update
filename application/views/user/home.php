@@ -49,6 +49,13 @@
             width: 100%;
         }
     }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
     </style>
     <div class="overlay"></div>
     <div class="justify-content-center mt-5 container">
@@ -66,9 +73,30 @@
                 <?php echo form_close() ?>
             </div>
         </div>
+    </div>
 </section>
 
-<section class="ftco-section" style="background-color: #F6FBF4;">
+<section class="ftco-section" style="background-color: white;">
+
+    <div class="container">
+        <div class="row justify-content-start">
+            <div class="col-md-5 heading-section ftco-animate">
+                <h2 class="text-black">Mau cari kost?</h2>
+                <span class="mb-5" style="color: black;">Dapatkan Segera Kostmu Hanya di SevenKos!!</span>
+                <?php echo form_open('search') ?>
+                <div class="input-group mb-3 position-relative" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+                    <input type="text" class="form-control input-text" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2" name="keyword">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-success btn-lg" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                    <?php echo form_close() ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
     <div class="col-md-12 heading-section text-center ftco-animate iklan">
         <h1 style="font-family: 'bebas_neue';">Dapatkan Promo Menarik</h1>
         <div id="ad-container">
@@ -146,8 +174,6 @@
                                 <h3><a href="<?php echo site_url('detail/kost-tian-jalan-pagarsih-no78'); ?>">Kost Tian Jalan Pagarsih No. 78</a></h3>
                                 <span class="location">Jakarta</span>
                                 <a href="#" class="d-flex align-items-center justify-content-center btn-custom" onclick="copyToClipboard('<?php echo base_url('detail/kost-tian-jalan-pagarsih-no78'); ?>')">
-                                    <span class="fa fa-link"></span>
-                                </a>
                                     <span class="fa fa-link"></span>
                                 </a>
                                 <div class="list-team d-flex align-items-center mt-2 pt-2 border-top">
@@ -261,7 +287,7 @@
     </div>
 </section>
 
-<section class="ftco-section" style="background-color: #F6FBF4;">
+<section class="ftco-section" style="background-color: white;">
     <div class="container">
         <div class="justify-content-center heading-section text-center ftco-animate mb-5">
             <span class="subheading" style="color: #1cc88a;"> What we offer </span>
@@ -372,7 +398,7 @@
     </div>
     <hr>
 </section>
-<section class="ftco-section ftco-no-pt" style="background-color: #F6FBF4;">
+<section class="ftco-section ftco-no-pt" style="background-color: white;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 heading-section text-center ftco-animate mb-5">
