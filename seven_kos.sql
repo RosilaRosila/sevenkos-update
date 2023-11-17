@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Jun 2023 pada 05.38
--- Versi server: 10.4.27-MariaDB
--- Versi PHP: 8.2.0
+-- Generation Time: Nov 17, 2023 at 02:55 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kota`
+-- Table structure for table `kota`
 --
 
 CREATE TABLE `kota` (
@@ -33,10 +33,10 @@ CREATE TABLE `kota` (
   `background` text NOT NULL,
   `status` int(1) DEFAULT 0,
   `filter_status` int(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `kota`
+-- Dumping data for table `kota`
 --
 
 INSERT INTO `kota` (`id_kota`, `kota`, `background`, `status`, `filter_status`) VALUES
@@ -48,7 +48,20 @@ INSERT INTO `kota` (`id_kota`, `kota`, `background`, `status`, `filter_status`) 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_kos`
+-- Table structure for table `tbl_iklan`
+--
+
+CREATE TABLE `tbl_iklan` (
+  `id` int(10) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `file` varchar(100) NOT NULL,
+  `link` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_kos`
 --
 
 CREATE TABLE `tbl_kos` (
@@ -73,10 +86,10 @@ CREATE TABLE `tbl_kos` (
   `sisa_kamar` int(11) NOT NULL,
   `peraturan_kamar` longtext NOT NULL,
   `spesifikasi_kamar` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_kos`
+-- Dumping data for table `tbl_kos`
 --
 
 INSERT INTO `tbl_kos` (`id_kos`, `id_user`, `alamat`, `slug`, `date`, `time`, `status`, `kota`, `harga`, `diskon`, `kategori`, `nama`, `tipe`, `fasilitas`, `fasilitas_umum`, `fasilitas_kamar_mandi`, `fasilitas_parkir`, `image_header`, `sisa_kamar`, `peraturan_kamar`, `spesifikasi_kamar`) VALUES
@@ -119,7 +132,19 @@ INSERT INTO `tbl_kos` (`id_kos`, `id_user`, `alamat`, `slug`, `date`, `time`, `s
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_sewa`
+-- Table structure for table `tbl_links`
+--
+
+CREATE TABLE `tbl_links` (
+  `id` int(10) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `link` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_sewa`
 --
 
 CREATE TABLE `tbl_sewa` (
@@ -130,12 +155,12 @@ CREATE TABLE `tbl_sewa` (
   `tagihan` int(11) NOT NULL,
   `buktipem` varchar(32) NOT NULL,
   `status` enum('Lunas','Belum Lunas','','') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_tempat`
+-- Table structure for table `tbl_tempat`
 --
 
 CREATE TABLE `tbl_tempat` (
@@ -143,10 +168,10 @@ CREATE TABLE `tbl_tempat` (
   `id_kos` int(10) NOT NULL,
   `kategoriTempat` varchar(255) NOT NULL,
   `namaTempat` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_tempat`
+-- Dumping data for table `tbl_tempat`
 --
 
 INSERT INTO `tbl_tempat` (`id_tempat`, `id_kos`, `kategoriTempat`, `namaTempat`) VALUES
@@ -169,7 +194,7 @@ INSERT INTO `tbl_tempat` (`id_tempat`, `id_kos`, `kategoriTempat`, `namaTempat`)
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_request`
+-- Table structure for table `tb_request`
 --
 
 CREATE TABLE `tb_request` (
@@ -190,10 +215,10 @@ CREATE TABLE `tb_request` (
   `jumlah_kamar` varchar(100) NOT NULL,
   `is_active` int(1) NOT NULL,
   `id_user_request` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_request`
+-- Dumping data for table `tb_request`
 --
 
 INSERT INTO `tb_request` (`id_request`, `nama_depan`, `nama_belakang`, `info_hub`, `no_hp`, `nama_properti`, `url_properti`, `tipe_kos`, `harga`, `provinsi`, `kabupaten_kota`, `kecamatan`, `kelurahan`, `alamat`, `jumlah_kamar`, `is_active`, `id_user_request`) VALUES
@@ -209,16 +234,16 @@ INSERT INTO `tb_request` (`id_request`, `nama_depan`, `nama_belakang`, `info_hub
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_role`
+-- Table structure for table `tb_role`
 --
 
 CREATE TABLE `tb_role` (
   `id_role` int(11) NOT NULL,
   `nama_role` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_role`
+-- Dumping data for table `tb_role`
 --
 
 INSERT INTO `tb_role` (`id_role`, `nama_role`) VALUES
@@ -230,7 +255,7 @@ INSERT INTO `tb_role` (`id_role`, `nama_role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_user`
+-- Table structure for table `tb_user`
 --
 
 CREATE TABLE `tb_user` (
@@ -245,10 +270,10 @@ CREATE TABLE `tb_user` (
   `alamat` text NOT NULL,
   `id_role` int(11) NOT NULL,
   `is_active` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_user`
+-- Dumping data for table `tb_user`
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `password`, `fullname`, `foto`, `jk`, `email`, `no_hp`, `alamat`, `id_role`, `is_active`) VALUES
@@ -314,12 +339,13 @@ INSERT INTO `tb_user` (`id_user`, `username`, `password`, `fullname`, `foto`, `j
 (74, 'Bagus', 'fcea920f7412b5da7be0cf42b8c93759', 'Bagus Hariyanto', 'pria.png', 'Pria', 'bagus.magang@gmail.com', '124567890', 'Tegal', 2, 0),
 (75, 'Jokololer', 'e10adc3949ba59abbe56e057f20f883e', 'Bagus Hariyanto', 'pria.png', 'Pria', 'bagushariyanto.magangjogja@gma', '0890440305003', 'Tegal', 2, 0),
 (77, 'bagus@gmail.com', '6c282280688ff96110c7a70d049926e0', 'bagus', 'monyet.jpg\r\n', 'Pria', 'bagus@gmail.com', '08123456789', 'seee', 3, 0),
-(79, 'user', 'fcea920f7412b5da7be0cf42b8c93759', 'user', 'pria.png', 'Pria', 'user@gmail.com', '1234567', '123456', 3, 0);
+(79, 'user', 'fcea920f7412b5da7be0cf42b8c93759', 'user', 'pria.png', 'Pria', 'user@gmail.com', '1234567', '123456', 3, 0),
+(81, 'putri', '89e336b66e1416fe1b6cfc223a314f5b', 'putri', 'wanita.png', 'Wanita', 'putri@gmail.com', '0099899', 'Bantul, Yogyakarta', 2, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaksi`
+-- Table structure for table `transaksi`
 --
 
 CREATE TABLE `transaksi` (
@@ -337,10 +363,10 @@ CREATE TABLE `transaksi` (
   `status_sewa` varchar(20) NOT NULL,
   `bukti_pembayaran` varchar(100) NOT NULL,
   `status_pembayaran` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `transaksi`
+-- Dumping data for table `transaksi`
 --
 
 INSERT INTO `transaksi` (`id_booking`, `id_user`, `id_Owner`, `id_kos`, `sisa_kamar`, `tgl_sewa`, `tanggal_selesai`, `harga`, `kategori`, `tgl_pengembalian`, `status_pengembalian`, `status_sewa`, `bukti_pembayaran`, `status_pembayaran`) VALUES
@@ -367,22 +393,23 @@ INSERT INTO `transaksi` (`id_booking`, `id_user`, `id_Owner`, `id_kos`, `sisa_ka
 (211, 74, 3, 1, 1, '2023-05-27', '2023-06-27', 500000, '1', '0000-00-00', 'belum_kembali', 'belum_selesai', '', 0),
 (222, 1, 3, 3, 99, '2023-06-07', '2024-06-07', 600000, '12', '0000-00-00', 'belum_kembali', 'belum_selesai', 'blob.svg', 1),
 (223, 1, 77, 93, 5, '2023-06-14', '2024-06-14', 1000, '12', '0000-00-00', 'belum_kembali', 'belum_selesai', '0a7ab9067a9360ead587760376032efa.jpg', 1),
-(226, 1, 6, 4, 2, '2023-06-22', '2023-12-22', 900000, '6', '0000-00-00', 'belum_kembali', 'belum_selesai', 'd3bf174528bfe1c59f7142896420a061.jpg', 0);
+(226, 1, 6, 4, 2, '2023-06-22', '2023-12-22', 900000, '6', '0000-00-00', 'belum_kembali', 'belum_selesai', 'd3bf174528bfe1c59f7142896420a061.jpg', 0),
+(227, 81, 3, 2, 8, '2023-11-17', '2023-12-17', 700000, '1', '0000-00-00', 'belum_kembali', 'belum_selesai', '', 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `unser_access_menu`
+-- Table structure for table `unser_access_menu`
 --
 
 CREATE TABLE `unser_access_menu` (
   `id` int(11) NOT NULL,
   `id_role` int(10) NOT NULL,
   `menu_id` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `unser_access_menu`
+-- Dumping data for table `unser_access_menu`
 --
 
 INSERT INTO `unser_access_menu` (`id`, `id_role`, `menu_id`) VALUES
@@ -400,16 +427,16 @@ INSERT INTO `unser_access_menu` (`id`, `id_role`, `menu_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_menu`
+-- Table structure for table `user_menu`
 --
 
 CREATE TABLE `user_menu` (
   `id` int(11) NOT NULL,
   `menu` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user_menu`
+-- Dumping data for table `user_menu`
 --
 
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
@@ -421,7 +448,7 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_sub_menu`
+-- Table structure for table `user_sub_menu`
 --
 
 CREATE TABLE `user_sub_menu` (
@@ -431,10 +458,10 @@ CREATE TABLE `user_sub_menu` (
   `url` varchar(128) NOT NULL,
   `icon` varchar(128) NOT NULL,
   `is_active` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user_sub_menu`
+-- Dumping data for table `user_sub_menu`
 --
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
@@ -452,20 +479,32 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 --
 
 --
--- Indeks untuk tabel `kota`
+-- Indexes for table `kota`
 --
 ALTER TABLE `kota`
   ADD PRIMARY KEY (`id_kota`);
 
 --
--- Indeks untuk tabel `tbl_kos`
+-- Indexes for table `tbl_iklan`
+--
+ALTER TABLE `tbl_iklan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_kos`
 --
 ALTER TABLE `tbl_kos`
   ADD PRIMARY KEY (`id_kos`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `tbl_sewa`
+-- Indexes for table `tbl_links`
+--
+ALTER TABLE `tbl_links`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_sewa`
 --
 ALTER TABLE `tbl_sewa`
   ADD PRIMARY KEY (`id`),
@@ -473,106 +512,118 @@ ALTER TABLE `tbl_sewa`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `tbl_tempat`
+-- Indexes for table `tbl_tempat`
 --
 ALTER TABLE `tbl_tempat`
   ADD PRIMARY KEY (`id_tempat`),
   ADD KEY `id_kos` (`id_kos`) USING BTREE;
 
 --
--- Indeks untuk tabel `tb_request`
+-- Indexes for table `tb_request`
 --
 ALTER TABLE `tb_request`
   ADD PRIMARY KEY (`id_request`);
 
 --
--- Indeks untuk tabel `tb_role`
+-- Indexes for table `tb_role`
 --
 ALTER TABLE `tb_role`
   ADD PRIMARY KEY (`id_role`);
 
 --
--- Indeks untuk tabel `tb_user`
+-- Indexes for table `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- Indeks untuk tabel `transaksi`
+-- Indexes for table `transaksi`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`id_booking`);
 
 --
--- Indeks untuk tabel `unser_access_menu`
+-- Indexes for table `unser_access_menu`
 --
 ALTER TABLE `unser_access_menu`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
--- Indeks untuk tabel `user_sub_menu`
+-- Indexes for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `kota`
+-- AUTO_INCREMENT for table `kota`
 --
 ALTER TABLE `kota`
   MODIFY `id_kota` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_kos`
+-- AUTO_INCREMENT for table `tbl_iklan`
+--
+ALTER TABLE `tbl_iklan`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_kos`
 --
 ALTER TABLE `tbl_kos`
   MODIFY `id_kos` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_tempat`
+-- AUTO_INCREMENT for table `tbl_links`
+--
+ALTER TABLE `tbl_links`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_tempat`
 --
 ALTER TABLE `tbl_tempat`
   MODIFY `id_tempat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_request`
+-- AUTO_INCREMENT for table `tb_request`
 --
 ALTER TABLE `tb_request`
   MODIFY `id_request` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_role`
+-- AUTO_INCREMENT for table `tb_role`
 --
 ALTER TABLE `tb_role`
   MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_user`
+-- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
--- AUTO_INCREMENT untuk tabel `transaksi`
+-- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_booking` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=227;
+  MODIFY `id_booking` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=228;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `tbl_kos`
+-- Constraints for table `tbl_kos`
 --
 ALTER TABLE `tbl_kos`
   ADD CONSTRAINT `tbl_kos_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`);
 
 --
--- Ketidakleluasaan untuk tabel `tbl_sewa`
+-- Constraints for table `tbl_sewa`
 --
 ALTER TABLE `tbl_sewa`
   ADD CONSTRAINT `tbl_sewa_ibfk_1` FOREIGN KEY (`id_kos`) REFERENCES `tbl_kos` (`id_kos`),
